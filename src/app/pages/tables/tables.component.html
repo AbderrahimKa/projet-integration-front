@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>Gestion des Budgets</h1>
+
+  <!-- Formulaire pour ajouter ou mettre à jour un budget -->
+  <form (ngSubmit)="saveBudget()">
+    <div>
+      <label for="prevision">Prévision:</label>
+      <input id="prevision" type="number" [(ngModel)]="newBudget.prevision" name="prevision" required />
+    </div>
+    <div>
+      <label for="depenses">Dépenses Réelles:</label>
+      <input id="depenses" type="number" [(ngModel)]="newBudget.depensesReelles" name="depenses" required />
+    </div>
+    <div>
+      <label for="fonds">Fonds Attribués:</label>
+      <input id="fonds" type="number" [(ngModel)]="newBudget.fondsAttribues" name="fonds" required />
+    </div>
+    <button type="submit">Enregistrer</button>
+  </form>
+
+  <!-- Tableau des budgets -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prévision</th>
+        <th>Dépenses Réelles</th>
+        <th>Fonds Attribués</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let budget of budgets">
+        <td>{{ budget.id }}</td>
+        <td>{{ budget.prevision }}</td>
+        <td>{{ budget.depensesReelles }}</td>
+        <td>{{ budget.fondsAttribues }}</td>
+        <td>
+          <button (click)="selectBudget(budget.id)">Voir</button>
+          <button (click)="calculateEcart(budget.id)">Calculer Écart</button>
+          <button (click)="allocateFunds(budget.id, 100)">Attribuer 100€</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Détails du budget sélectionné -->
+  <div *ngIf="selectedBudget">
+    <h2>Détails du Budget</h2>
+    <p>ID: {{ selectedBudget.id }}</p>
+    <p>Prévision: {{ selectedBudget.prevision }}</p>
+    <p>Dépenses Réelles: {{ selectedBudget.depensesReelles }}</p>
+    <p>Fonds Attribués: {{ selectedBudget.fondsAttribues }}</p>
+  </div>
+
+  <!-- Affichage de l'écart calculé -->
+  <div *ngIf="ecart !== undefined">
+    <h2>Écart Calculé</h2>
+    <p>Écart: {{ ecart }} €</p>
+  </div>
+</div>

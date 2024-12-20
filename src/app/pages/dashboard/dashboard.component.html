@@ -1,0 +1,92 @@
+<div class="container">
+  <h1>Gestion des Profils</h1>
+
+  <!-- Formulaire pour créer un profil -->
+  <h2>Créer un Profil</h2>
+  <form (ngSubmit)="createProfile()">
+    <div class="form-group">
+      <label for="firstName">Prénom</label>
+      <input type="text" id="firstName" [(ngModel)]="newProfile.firstName" name="firstName" class="form-control" placeholder="Prénom" required>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Nom</label>
+      <input type="text" id="lastName" [(ngModel)]="newProfile.lastName" name="lastName" class="form-control" placeholder="Nom" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="newProfile.email" name="email" class="form-control" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Téléphone</label>
+      <input type="text" id="phoneNumber" [(ngModel)]="newProfile.phoneNumber" name="phoneNumber" class="form-control" placeholder="Téléphone" required>
+    </div>
+    <div class="form-group">
+      <label for="address">Adresse</label>
+      <input type="text" id="address" [(ngModel)]="newProfile.address" name="address" class="form-control" placeholder="Adresse" required>
+    </div>
+    <div class="form-group">
+      <label for="skills">Compétences</label>
+      <input type="text" id="skills" [(ngModel)]="newProfile.skills" name="skills" class="form-control" placeholder="Compétences">
+    </div>
+    <div class="form-group">
+      <label for="gender">Genre</label>
+      <select id="gender" [(ngModel)]="newProfile.gender" name="gender" class="form-control" required>
+        <option value="" disabled selected>Choisir...</option>
+        <option value="Male">Homme</option>
+        <option value="Female">Femme</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+  </form>
+
+  <!-- Liste des profils -->
+  <h2 class="mt-4">Liste des Profils</h2>
+  <ul class="list-group">
+    <li *ngFor="let profile of profiles" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ profile.firstName }} {{ profile.lastName }}</span>
+      <div>
+        <button class="btn btn-info btn-sm me-2" (click)="selectedProfile = profile">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteProfile(profile.id)">Supprimer</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Détails du profil sélectionné -->
+  <div *ngIf="selectedProfile" class="mt-4">
+    <h3>Modifier le Profil</h3>
+    <form (ngSubmit)="updateProfile()">
+      <div class="form-group">
+        <label for="editFirstName">Prénom</label>
+        <input type="text" id="editFirstName" [(ngModel)]="selectedProfile.firstName" name="firstName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="editLastName">Nom</label>
+        <input type="text" id="editLastName" [(ngModel)]="selectedProfile.lastName" name="lastName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="editEmail">Email</label>
+        <input type="email" id="editEmail" [(ngModel)]="selectedProfile.email" name="email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="editPhoneNumber">Téléphone</label>
+        <input type="text" id="editPhoneNumber" [(ngModel)]="selectedProfile.phoneNumber" name="phoneNumber" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="editAddress">Adresse</label>
+        <input type="text" id="editAddress" [(ngModel)]="selectedProfile.address" name="address" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="editSkills">Compétences</label>
+        <input type="text" id="editSkills" [(ngModel)]="selectedProfile.skills" name="skills" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="editGender">Genre</label>
+        <select id="editGender" [(ngModel)]="selectedProfile.gender" name="gender" class="form-control" required>
+          <option value="Male">Homme</option>
+          <option value="Female">Femme</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success mt-2">Mettre à jour</button>
+    </form>
+  </div>
+</div>

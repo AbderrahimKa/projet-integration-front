@@ -1,0 +1,186 @@
+// Variables de couleur
+$primary-color: #007bff;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$light-gray: #f8f9fa;
+$dark-gray: #343a40;
+
+// Inclure Bootstrap pour utiliser ses variables et classes de base
+@import '~bootstrap/scss/bootstrap';
+
+// Style global pour le container
+.container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: $light-gray;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: $dark-gray;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+// Formulaire
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  .form-group {
+    margin-bottom: 15px;
+    
+    label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: $dark-gray;
+    }
+
+    input,
+    select,
+    textarea {
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      padding: 10px;
+      width: 100%;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 5px rgba($primary-color, 0.3);
+      }
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &:active {
+      background-color: darken($primary-color, 15%);
+    }
+  }
+}
+
+// Table des contrats avec Bootstrap intégré
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  th {
+    background-color: $primary-color;
+    color: white;
+    font-weight: 600;
+  }
+
+  td {
+    background-color: #fff;
+    color: $dark-gray;
+  }
+
+  td button {
+    margin-right: 10px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+
+    &.btn-warning {
+      background-color: $warning-color;
+      color: white;
+
+      &:hover {
+        background-color: darken($warning-color, 10%);
+      }
+    }
+
+    &.btn-danger {
+      background-color: $danger-color;
+      color: white;
+
+      &:hover {
+        background-color: darken($danger-color, 10%);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// Résultat des actions (SweetAlert2)
+.swal2-popup {
+  font-size: 1rem;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.swal2-success {
+  background-color: $success-color;
+  color: white;
+}
+
+.swal2-error {
+  background-color: $danger-color;
+  color: white;
+}
+
+// Utilisation de certaines classes Bootstrap pour la réactivité
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  button[type="submit"] {
+    font-size: 1rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  td button {
+    padding: 6px 12px;
+  }
+}

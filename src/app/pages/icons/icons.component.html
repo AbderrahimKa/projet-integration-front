@@ -1,0 +1,46 @@
+<div class="feedback-container">
+    <!-- Section Feedbacks -->
+    <section class="feedback-list">
+      <h2 class="section-title">Feedbacks</h2>
+  
+      <div *ngFor="let feedback of feedbacks" class="feedback-item">
+        <div class="feedback-details">
+          <p class="comment"><strong>{{ feedback.commentaire }}</strong></p>
+          <p class="rating">Rating: {{ feedback.rating }}</p>
+        </div>
+        <button class="delete-btn" (click)="deleteFeedback(feedback.id)">Delete</button>
+      </div>
+    </section>
+  
+    <!-- Formulaire pour ajouter un feedback -->
+    <section class="feedback-form">
+      <h3 class="section-title">Add Feedback</h3>
+      
+      <div class="form-group">
+        <label for="commentaire">Commentaire:</label>
+        <input 
+          [(ngModel)]="newFeedback.commentaire" 
+          id="commentaire" 
+          class="form-input" 
+          type="text" 
+          placeholder="Enter your comment"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input 
+          [(ngModel)]="newFeedback.rating" 
+          id="rating" 
+          class="form-input" 
+          type="number" 
+          min="1" 
+          max="5" 
+          placeholder="Rate between 1 and 5"
+        />
+      </div>
+  
+      <button class="submit-btn" (click)="addFeedback()">Add Feedback</button>
+    </section>
+  </div>
+  

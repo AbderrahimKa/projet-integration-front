@@ -1,0 +1,106 @@
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+    }
+  
+    .feedback-list {
+      margin-bottom: 40px;
+  
+      .feedback-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  
+        .feedback-details {
+          flex: 1;
+  
+          .comment {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+          }
+  
+          .rating {
+            color: #888;
+            font-size: 0.9rem;
+          }
+        }
+  
+        .delete-btn {
+          padding: 5px 10px;
+          background-color: #ff4d4d;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #ff1a1a;
+          }
+        }
+      }
+    }
+  
+    .feedback-form {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  
+      .form-group {
+        margin-bottom: 15px;
+  
+        label {
+          display: block;
+          font-size: 1.1rem;
+          color: #555;
+          margin-bottom: 5px;
+        }
+  
+        .form-input {
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-sizing: border-box;
+  
+          &:focus {
+            border-color: #4c8bf5;
+            outline: none;
+          }
+        }
+      }
+  
+      .submit-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4c8bf5;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #3578e5;
+        }
+      }
+    }
+  }
+  

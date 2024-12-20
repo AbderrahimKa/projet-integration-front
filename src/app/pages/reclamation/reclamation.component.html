@@ -1,0 +1,17 @@
+<div class="reclamation-list">
+    <h2>Liste des Réclamations</h2>
+  
+    <div *ngFor="let reclamation of reclamations" class="reclamation-item">
+      <h3>{{ reclamation.titre }}</h3>
+      <p>{{ reclamation.description }}</p>
+      <p><strong>Date de Création :</strong> {{ reclamation.dateCreation | date:'dd/MM/yyyy HH:mm' }}</p>
+      <p><strong>Statut :</strong> {{ reclamation.statut }}</p>
+  
+      <div class="actions">
+        <button (click)="supprimerReclamation(reclamation.id)" class="btn btn-danger">Supprimer</button>
+      </div>
+    </div>
+  
+    <button (click)="ajouterReclamation()" class="btn btn-primary">Ajouter une Réclamation</button>
+  </div>
+  

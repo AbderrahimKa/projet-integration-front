@@ -1,0 +1,159 @@
+$primary-color: #007bff;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$light-gray: #f8f9fa;
+$dark-gray: #343a40;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $light-gray;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    color: $dark-gray;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    div {
+      flex: 1 1 200px;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: $dark-gray;
+      }
+
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 5px $primary-color;
+        }
+      }
+    }
+
+    button {
+      align-self: flex-end;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: $success-color;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($success-color, 10%);
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    thead {
+      background-color: $primary-color;
+      color: white;
+
+      tr {
+        th {
+          padding: 10px;
+          text-align: left;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        &:hover {
+          background-color: lighten($primary-color, 40%);
+          color: white;
+        }
+
+        td {
+          padding: 10px;
+
+          button {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &.view-btn {
+              background-color: $primary-color;
+              color: white;
+
+              &:hover {
+                background-color: darken($primary-color, 10%);
+              }
+            }
+
+            &.ecart-btn {
+              background-color: $success-color;
+              color: white;
+
+              &:hover {
+                background-color: darken($success-color, 10%);
+              }
+            }
+
+            &.funds-btn {
+              background-color: $danger-color;
+              color: white;
+
+              &:hover {
+                background-color: darken($danger-color, 10%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .details-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      color: $dark-gray;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div class="maps-container">
+    <h1>Gestion des Disponibilités</h1>
+  
+    <!-- Section de la carte -->
+    <div id="map-canvas" data-lat="48.8566" data-lng="2.3522" style="height: 400px;"></div>
+  
+    <!-- Liste des disponibilités -->
+    <div class="disponibilites-list">
+      <div *ngIf="disponibilites.length > 0">
+        <h2>Disponibilités</h2>
+        <div *ngFor="let disponibilite of disponibilites" class="disponibilite-item">
+          <div>
+            <h3>{{ disponibilite.date }} ({{ disponibilite.startTime }} - {{ disponibilite.endTime }})</h3>
+            <p><strong>Freelance ID:</strong> {{ disponibilite.freelanceId }}</p>
+          </div>
+  
+          <div class="actions">
+            <button (click)="updateDisponibilite(disponibilite)" class="btn btn-update">Mettre à jour</button>
+            <button (click)="deleteDisponibilite(disponibilite.id)" class="btn btn-delete">Supprimer</button>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="disponibilites.length === 0">
+        <p>Aucune disponibilité trouvée.</p>
+      </div>
+    </div>
+  
+    <!-- Formulaire de création de disponibilité -->
+    <div class="create-disponibilite">
+      <h2>Ajouter une nouvelle disponibilité</h2>
+      <form (ngSubmit)="createDisponibilite()">
+        <label for="date">Date</label>
+        <input type="date" id="date" [(ngModel)]="newDisponibilite.date" name="date" required />
+  
+        <label for="startTime">Heure de début</label>
+        <input type="time" id="startTime" [(ngModel)]="newDisponibilite.startTime" name="startTime" required />
+  
+        <label for="endTime">Heure de fin</label>
+        <input type="time" id="endTime" [(ngModel)]="newDisponibilite.endTime" name="endTime" required />
+  
+        <button type="submit" class="btn btn-create">Ajouter Disponibilité</button>
+      </form>
+    </div>
+  </div>
+  

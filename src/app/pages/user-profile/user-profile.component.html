@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Gestion des Contrats</h2>
+  
+  <!-- Formulaire de création / édition de contrat -->
+  <form (ngSubmit)="ajouterContrat()">
+    <div class="form-group">
+      <label for="freelance">Freelance</label>
+      <input type="text" class="form-control" id="freelance" [(ngModel)]="contratForm.freelance" name="freelance" required />
+    </div>
+    <div class="form-group">
+      <label for="client">Client</label>
+      <input type="text" class="form-control" id="client" [(ngModel)]="contratForm.client" name="client" required />
+    </div>
+    <div class="form-group">
+      <label for="dateCreation">Date de Création</label>
+      <input type="datetime-local" class="form-control" id="dateCreation" [(ngModel)]="contratForm.dateCreation" name="dateCreation" required />
+    </div>
+    <div class="form-group">
+      <label for="dateEcheance">Date d'Échéance</label>
+      <input type="datetime-local" class="form-control" id="dateEcheance" [(ngModel)]="contratForm.dateEcheance" name="dateEcheance" required />
+    </div>
+    <div class="form-group">
+      <label for="statut">Statut</label>
+      <select class="form-control" id="statut" [(ngModel)]="contratForm.statut" name="statut" required>
+        <option value="En cours">En cours</option>
+        <option value="Terminé">Terminé</option>
+        <option value="Annulé">Annulé</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="signatureElectronique">Signature Électronique</label>
+      <textarea class="form-control" id="signatureElectronique" [(ngModel)]="contratForm.signatureElectronique" name="signatureElectronique"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter Contrat</button>
+  </form>
+  
+  <!-- Liste des contrats -->
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th>Freelance</th>
+        <th>Client</th>
+        <th>Date Création</th>
+        <th>Date Échéance</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contrat of contrats">
+        <td>{{ contrat.freelance }}</td>
+        <td>{{ contrat.client }}</td>
+        <td>{{ contrat.dateCreation }}</td>
+        <td>{{ contrat.dateEcheance }}</td>
+        <td>{{ contrat.statut }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="editerContrat(contrat)">Éditer</button>
+          <button class="btn btn-danger" (click)="supprimerContrat(contrat.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

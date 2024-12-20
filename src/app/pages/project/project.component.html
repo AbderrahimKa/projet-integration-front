@@ -1,0 +1,64 @@
+<div class="project-container">
+    <h2>Gestion des Projets</h2>
+  
+    <!-- Formulaire pour ajouter/mettre à jour un projet -->
+    <form (ngSubmit)="ajouterProjet()" #projetForm="ngForm" class="project-form">
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" [(ngModel)]="projetForm.nom" name="nom" id="nom" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea [(ngModel)]="projetForm.description" name="description" id="description" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="budget">Budget:</label>
+        <input type="number" [(ngModel)]="projetForm.budget" name="budget" id="budget" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateDebut">Date de début:</label>
+        <input type="date" [(ngModel)]="projetForm.dateDebut" name="dateDebut" id="dateDebut" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateFin">Date de fin:</label>
+        <input type="date" [(ngModel)]="projetForm.dateFin" name="dateFin" id="dateFin" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="skills">Compétences:</label>
+        <input type="text" [(ngModel)]="projetForm.skills" name="skills" id="skills">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Ajouter Projet</button>
+    </form>
+  
+    <!-- Liste des projets -->
+    <div *ngIf="projets.length > 0">
+      <h3>Projets Disponibles</h3>
+      <ul class="project-list">
+        <li *ngFor="let projet of projets" class="project-item">
+          <div>
+            <h4>{{ projet.nom }}</h4>
+            <p>{{ projet.description }}</p>
+            <p>Budget: {{ projet.budget }}</p>
+            <p>Date de début: {{ projet.dateDebut }}</p>
+            <p>Date de fin: {{ projet.dateFin }}</p>
+            <p>Compétences: {{ projet.skills }}</p>
+          </div>
+          <div class="project-actions">
+            <button (click)="editerProjet(projet)" class="btn btn-warning">Modifier</button>
+            <button (click)="supprimerProjet(projet.id)" class="btn btn-danger">Supprimer</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="projets.length === 0">
+      <p>Aucun projet disponible.</p>
+    </div>
+  </div>
+  
